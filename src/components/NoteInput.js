@@ -7,7 +7,7 @@ function NoteInput({ onAdd }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (title && content) {
+    if (title || content) {
       onAdd({ title, content });
       setTitle('');
       setContent('');

@@ -1,5 +1,6 @@
 // src/components/Note.js
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 function Note({ note, onDelete, onArchive, onEdit }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -55,5 +56,16 @@ function Note({ note, onDelete, onArchive, onEdit }) {
     </div>
   );
 }
+Note.propTypes = {
+  note: PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    title: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired,
+    archived: PropTypes.bool.isRequired,
+  }).isRequired,
+  onDelete: PropTypes.func.isRequired,
+  onArchive: PropTypes.func.isRequired,
+  onEdit: PropTypes.func.isRequired,
+};
 
 export default Note;
